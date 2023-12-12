@@ -114,7 +114,7 @@ def view_recipe(recipe_id):
         'apiKey': API_KEY,
     }
 
-    # Send a GET request to the Spoonacular API to get the recipe information
+    # Send a GET request to the Spoonacular API to get the recipe information 
     response = requests.get(url, params=params)
     if response.status_code == 200:
         recipe = response.json()
