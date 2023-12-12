@@ -3,5 +3,6 @@ This project was a fun journey into web development using the Flask framework in
 
 
 Youtube Link: https://youtu.be/7Csuzkm_a54
+
 The said logo:
 ![thumbnail_image0](https://github.com/michaelq-pham/RecipeWiz-Final/assets/149196728/b3b60985-ea59-41f2-b883-7b0f57635df2)
