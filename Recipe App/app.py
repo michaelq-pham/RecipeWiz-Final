@@ -75,7 +75,7 @@ def dessert():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # If a form is submitted
+       
         query = request.form.get('search_query', '')
         recipes = search_recipes(query)
         return render_template('home.html', recipes=recipes, search_query=query)
