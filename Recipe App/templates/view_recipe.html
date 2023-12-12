@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ recipe.title }}</title>
+    <style>
+        /* Google Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        /* Resetting default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: rgb(181, 147, 204);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Image styling */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* Main container styling */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* List styling */
+        ul, ol {
+            text-align: left;
+            list-style-position: inside;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Back link styling */
+        .back-link {
+            display: block;
+            margin-bottom: 20px;
+            color: #5cb85c;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            color: #4cae4c;
+        }
+    
+    /* Button styling */
+    .back-to-results-button {
+        background-color: #8759bd; /* Purple color */
+        color: white; /* White text */
+        padding: 10px 20px; /* Padding around the text */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        font-family: 'Roboto', sans-serif; /* Roboto font */
+        font-size: 16px; /* Font size */
+        text-decoration: none; /* No underline for text */
+        cursor: pointer; /* Cursor changes to pointer on hover */
+        transition: background-color 0.3s, transform 0.2s; /* Smooth transition for background color */
+    }
+
+    .back-to-results-button:hover {
+        background-color: #763da3; /* Slightly darker purple on hover */
+        transform: scale(1.1);
+    }   
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="recipe-details">
+        <h1>{{ recipe.title }}</h1>
+
+        <!-- Display the recipe image if available -->
+        {% if recipe.image %}
+        <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+        {% endif %}
+
+        <!-- Ingredients section -->
+        <h2 class="section-title">Ingredients</h2>
+        <!-- Create an unordered list for displaying the ingredients -->
+        <ul class="ingredient-list">
+            <!-- Loop through each ingredient in the recipe's extendedIngredients -->
+            {% for ingredient in recipe.extendedIngredients %}
+            <li>{{ ingredient.original }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Instructions Section -->
+        <h2 class="section-title">Instructions</h2>
+        <ol class="instruction-list">
+            {% for step in recipe.analyzedInstructions[0].steps %}
+            <li>{{ step.step }}</li>
+            {% endfor %}
+        </ol>
+        <a href="/?search_query={{ search_query }}" class="back-to-results-button">Back to search results</a>
+    </div>
+    </div>
+</body>
+</html>
